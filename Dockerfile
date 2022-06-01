@@ -31,9 +31,9 @@ COPY --chown=root:root .docker/group /etc/group
 USER appuser:appgroup
 
 ENV PLATFORM__HTTP_SERVER__HOST=0.0.0.0
-ENV PLATFORM__HTTP_SERVER__PORT=80
+ENV PLATFORM__HTTP_SERVER__PORT=3000
 
-EXPOSE 80
+EXPOSE 3000
 
 WORKDIR /home/appuser/app
 

@@ -11,6 +11,7 @@ helm_resource('dgraph-chart', 'dgraph/dgraph',
     flags=[
         '--set', 'ratel.enabled=true',
     ],
+    resource_deps=['dgraph'],
 )
 
 local_resource(
@@ -18,6 +19,7 @@ local_resource(
     serve_cmd='kubectl port-forward service/dgraph-dgraph-alpha 8080:8080',
     labels='dgraph',
     links='http://127.0.0.1:8080',
+    resource_deps=['dgraph-chart'],
 )
 
 local_resource(
@@ -25,6 +27,7 @@ local_resource(
     serve_cmd='kubectl port-forward service/dgraph-dgraph-ratel 8000:80',
     labels='dgraph',
     links='http://127.0.0.1:8000',
+    resource_deps=['dgraph-chart'],
 )
 
 local_resource(
@@ -32,6 +35,7 @@ local_resource(
     serve_cmd='kubectl port-forward service/dgraph-dgraph-zero 6080:6080',
     labels='dgraph',
     links='http://127.0.0.1:6080',
+    resource_deps=['dgraph-chart'],
 )
 
 # Platform
@@ -59,4 +63,5 @@ local_resource(
     serve_cmd='kubectl port-forward service/platform 4000:80',
     labels='platform',
     links='http://127.0.0.1:4000',
+    resource_deps=['platform'],
 )
