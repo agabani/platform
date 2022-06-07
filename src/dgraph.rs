@@ -184,6 +184,7 @@ impl Api {
     }
 }
 
+#[derive(Clone)]
 pub struct Client {
     api: Api,
 }
